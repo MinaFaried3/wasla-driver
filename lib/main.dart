@@ -1,12 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:wasla_driver/app/services/hive/hive_constants.dart';
 import 'package:wasla_driver/app/shared/common/bloc_observer.dart';
 import 'package:wasla_driver/app/wasla.dart';
 
+import 'app/config/http_overrides.dart';
 import 'app/shared/common/common_libs.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  //comment this later when ssl certificate work
+  HttpOverrides.global = AppHttpOverrides();
+
   await Hive.initFlutter();
   HiveConstants.registerHiveTypeAdapters();
   await EasyLocalization.ensureInitialized();
