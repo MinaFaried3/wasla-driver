@@ -1,0 +1,72 @@
+import 'package:wasla_driver/app/shared/common/common_libs.dart';
+
+part 'base_response.g.dart';
+// dart run build_runner build --delete-conflicting-outputs
+
+abstract class AppBaseResponse<Data extends Object?> extends Equatable {
+  @JsonKey(name: 'status')
+  final int? status;
+  @JsonKey(name: 'message')
+  final String? message;
+  @JsonKey(name: 'isSuccess')
+  final bool? success;
+  @JsonKey(name: 'data')
+  final Data? data;
+
+  const AppBaseResponse({
+    required this.status,
+    required this.message,
+    required this.success,
+    required this.data,
+  });
+}
+
+@JsonSerializable()
+class BaseResponseWithOutData extends AppBaseResponse<Object?> {
+  const BaseResponseWithOutData({
+    required super.status,
+    required super.message,
+    required super.success,
+    super.data,
+  });
+
+  //from json
+  factory BaseResponseWithOutData.fromJson(Map<String, dynamic> json) =>
+      _$BaseResponseWithOutDataFromJson(json);
+
+  //to json
+  Map<String, dynamic> toJson() => _$BaseResponseWithOutDataToJson(this);
+
+  @override
+  List<Object?> get props => [
+        status,
+        message,
+        success,
+        data,
+      ];
+}
+
+@JsonSerializable()
+class BaseResponseWithStringData extends AppBaseResponse<String?> {
+  const BaseResponseWithStringData({
+    required super.status,
+    required super.message,
+    required super.success,
+    super.data,
+  });
+
+  //from json
+  factory BaseResponseWithStringData.fromJson(Map<String, dynamic> json) =>
+      _$BaseResponseWithStringDataFromJson(json);
+
+  //to json
+  Map<String, dynamic> toJson() => _$BaseResponseWithStringDataToJson(this);
+
+  @override
+  List<Object?> get props => [
+        status,
+        message,
+        success,
+        data,
+      ];
+}
