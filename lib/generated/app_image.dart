@@ -8,6 +8,8 @@ class Assets {
       'assets/images/account_verification/edit_phone.svg';
   static const String accountVerificationEnterVerificationCode =
       'assets/images/account_verification/enter_verification_code.svg';
+  static const String assetsMapsStylesNightStyle =
+      'assets/maps_styles/night_style.json';
   static const String backgroundBackgroundStartNow =
       'assets/images/background/background_start_now.png';
   static const String cairoCairoBlack = 'assets/fonts/cairo/Cairo-Black.ttf';
@@ -99,6 +101,8 @@ class Assets {
   static const String svgHeartIcon = 'assets/images/svg/heart_icon.svg';
   static const String svgHomeIcon = 'assets/images/svg/home_icon.svg';
   static const String svgIdIcon = 'assets/images/svg/id_icon.svg';
+  static const String svgLicensePlateIcon =
+      'assets/images/svg/license_plate_icon.svg';
   static const String svgLocationIcon = 'assets/images/svg/location_icon.svg';
   static const String svgMaleFemaleIcon =
       'assets/images/svg/male_female_icon.svg';
@@ -126,6 +130,7 @@ class Assets {
   static const String svgStatusIcon = 'assets/images/svg/status_icon.svg';
   static const String svgTicketsIcon = 'assets/images/svg/tickets_icon.svg';
   static const String svgTrashIcon = 'assets/images/svg/trash_icon.svg';
+  static const String svgTripLineIcon = 'assets/images/svg/trip_line_icon.svg';
   static const String svgUserIcon = 'assets/images/svg/user_icon.svg';
   static const String svgWalletIcon = 'assets/images/svg/wallet_icon.svg';
   static const String svgWifi = 'assets/images/svg/wifi.svg';

@@ -158,11 +158,22 @@ class AppStrings {
   static const String followers = "followers";
   static const String followings = "followings";
   static const String viewAll = "viewAll";
+  static const String addVehicle = "addVehicle";
+  static const String vehicleCategory = "vehicleCategory";
+  static const String vehicleBrand = "vehicleBrand";
+  static const String vehicleCapacity = "vehicleCapacity";
+  static const String vehiclePackageCapacity = "vehiclePackageCapacity";
+  static const String vehicleAdsSidesNumber = "vehicleAdsSidesNumber";
+  static const String vehicleLicenseNumber = "vehicleLicenseNumber";
+  static const String vehicleLicenseWord = "vehicleLicenseWord";
+  static const String vehicleImage = "vehicleImage";
+  static const String yourVehicle = "yourVehicle";
 
   //tickets body
   static const String tripStart = "tripStart";
   static const String tripEnd = "tripEnd";
   static const String ticketPrice = "ticketPrice";
+  static const String filterByDate = "filterByDate";
 
   //search
   static const String takeOffDate = "takeOffDate";

@@ -12,9 +12,10 @@ import 'package:wasla_driver/models/CurrentPassengersTrips.dart';
 import 'package:wasla_driver/models/CurrentTripDetailsResponse.dart';
 import 'package:wasla_driver/models/CurrentTripResponse.dart';
 import 'package:wasla_driver/models/DriverResponse.dart';
-import 'package:wasla_driver/models/PublicDriverProfileResponse.dart';
 import 'package:wasla_driver/models/PublicDriverVehicleResponse.dart';
 import 'package:wasla_driver/models/StationsResponse.dart';
+import 'package:wasla_driver/models/TripHistoryByDateResponse.dart';
+import 'package:wasla_driver/models/TripHistoryResponse.dart';
 import 'package:wasla_driver/models/TripStatusResponse.dart';
 import 'package:wasla_driver/models/base_response.dart';
 
@@ -130,6 +131,18 @@ abstract class ApiServiceClient {
     @Part(name: 'AdsSidesNumber') required String adsSidesNumber,
     @Part(name: 'Image') required File image,
     @Part(name: 'PublicDriverId') required String publicDriverId,
+  });
+
+  ///history -----------------------------------------------------------------
+  @GET(EndPointsManager.getTripsHistory)
+  Future<TripsHistoryResponse> getTripsHistory({
+    @Header("Authorization") required String authorization,
+  });
+
+  @GET(EndPointsManager.getTripHistoryByDate)
+  Future<TripsHistoryByDateResponse> getTripHistoryByDate({
+    @Header("Authorization") required String authorization,
+    @Path("tripDate") required String tripDate,
   });
 
   ///----------------------------------------------------------------------

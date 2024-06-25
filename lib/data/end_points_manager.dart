@@ -63,6 +63,11 @@ class EndPointsManager {
   static const String getPublicDriverVehicle = "$_publicDriver/vehicle";
   static const String createPublicDriverVehicle =
       "$_publicDriver/CreateVehicle";
+
+  static const String getTripsHistory = "$_publicDriver/tripsHistory";
+
+  static const String getTripHistoryByDate =
+      "$_publicDriver/publicTrips/history/{tripDate}";
 }
 
 class HeadersManager {

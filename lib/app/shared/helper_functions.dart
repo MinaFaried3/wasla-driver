@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 
 import 'common/common_libs.dart';
-import 'package:intl/intl.dart';
 
 void tryCatch({
   required VoidCallback methodToExecute,
@@ -35,6 +34,7 @@ Future<Uint8List> getImageFromRawData(
 
   return finalImageList;
 }
+
 String formatDateTimeForServer(DateTime dateTime) {
   final DateFormat formatter = DateFormat("yyyy-MM-ddTHH:mm:ss.SSS'Z'");
   PrintManager.print(formatter.format(dateTime.toUtc()));
@@ -59,4 +59,59 @@ String formatDate(String dateTimeString) {
   String formattedDate = formatter.format(dateTime);
 
   return formattedDate;
+}
+
+String? validateNotEmpty(String? name) {
+  if (name == null || name.isEmpty) {
+    return AppStrings.cannotBeEmpty.tr();
+  }
+  return null;
+}
+
+String formatDateToServer(DateTime dateTime) {
+  final DateFormat formatter = DateFormat('yyyy-MM-dd');
+  return formatter.format(dateTime);
+}
+
+String getFormattedTimeFromString(String dateTimeString) {
+  // Parse the input date time string
+  DateTime dateTime = DateTime.parse(dateTimeString);
+
+  // Define the time format (e.g., '10:00 am')
+  DateFormat timeFormatter = DateFormat.jm();
+
+  // Format the time
+  String formattedTime = timeFormatter.format(dateTime);
+
+  return formattedTime;
+}
+
+String getFormattedDateFromString(String dateTimeString) {
+  // Parse the input date time string
+  DateTime dateTime = DateTime.parse(dateTimeString);
+
+  // Define the date format (e.g., 'Nov 12, Wednesday')
+  DateFormat dateFormatter = DateFormat('MMM d, EEEE');
+
+  // Format the date
+  String formattedDate = dateFormatter.format(dateTime);
+
+  return formattedDate;
+}
+
+String reformatDate(String inputDate) {
+  // Split the input date by '/'
+  List<String> parts = inputDate.split('/');
+
+  // Rearrange the parts to yyyy-MM-dd format
+  String reformattedDate = '${parts[2]}-${parts[0]}-${parts[1]}';
+  PrintManager.print(reformattedDate, color: ConsoleColor.brightCyanBg);
+  return reformattedDate;
+}
+
+String cleanDate(String inputDate) {
+  // Use a regular expression to remove non-ASCII characters
+  String cleanedDate = inputDate.replaceAll(RegExp(r'[^\x00-\x7F]'), '');
+
+  return cleanedDate;
 }

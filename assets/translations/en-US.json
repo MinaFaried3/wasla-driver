@@ -153,5 +153,16 @@
   "readyForTripDescription":"Please note that if the flight is activated, reservation and shipping requests will be activated automatically.",
   "shippingRequests": "Shipping Requests",
   "reservations":"Reservations",
-  "startTrip": "start trip"
+  "startTrip": "start trip",
+  "addVehicle": "Add Your Vehicle",
+  "vehicleCategory": "category",
+  "vehicleBrand":"brand",
+  "vehicleCapacity": "passenger count",
+  "vehiclePackageCapacity":"package capacity",
+  "vehicleAdsSidesNumber": "ads sides",
+  "vehicleLicenseNumber":"license plate number",
+  "vehicleLicenseWord": "license plate word",
+  "vehicleImage":"Vehicle Image",
+  "yourVehicle": "your vehicle",
+  "filterByDate":"Filter By Date"
 }

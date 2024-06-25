@@ -11,9 +11,10 @@ import 'package:wasla_driver/models/CurrentPassengersTrips.dart';
 import 'package:wasla_driver/models/CurrentTripDetailsResponse.dart';
 import 'package:wasla_driver/models/CurrentTripResponse.dart';
 import 'package:wasla_driver/models/DriverResponse.dart';
-import 'package:wasla_driver/models/PublicDriverProfileResponse.dart';
 import 'package:wasla_driver/models/PublicDriverVehicleResponse.dart';
 import 'package:wasla_driver/models/StationsResponse.dart';
+import 'package:wasla_driver/models/TripHistoryByDateResponse.dart';
+import 'package:wasla_driver/models/TripHistoryResponse.dart';
 import 'package:wasla_driver/models/base_response.dart';
 
 import '../network_error_handler.dart';
@@ -393,19 +394,39 @@ class PublicDriverRepository extends BaseRepository {
   FailureOr<BaseResponse> createPublicDriverVehicle(
       {required CreateVehicleRequest createVehicleRequest}) async {
     return await executeApiCall<BaseResponse, BaseResponse>(
-        apiCall: () async {
-          return apiServiceClient.createPublicDriverVehicle(
-              authorization: (await bearerToken),
-              category: createVehicleRequest.category,
-              licenseNumber: createVehicleRequest.licenseNumber,
-              licenseWord: createVehicleRequest.licenseWord,
-              capacity: createVehicleRequest.capacity,
-              brand: createVehicleRequest.brand,
-              packageCapacity: createVehicleRequest.packageCapacity,
-              adsSidesNumber: createVehicleRequest.adsSidesNumber,
-              image: createVehicleRequest.image,
-              publicDriverId: createVehicleRequest.publicDriverId);
-        },
-        onSuccess: (response) => response);
+      apiCall: () async {
+        return apiServiceClient.createPublicDriverVehicle(
+          authorization: (await bearerToken),
+          publicDriverId: (await driverId),
+          category: createVehicleRequest.category,
+          licenseNumber: createVehicleRequest.licenseNumber,
+          licenseWord: createVehicleRequest.licenseWord,
+          capacity: createVehicleRequest.capacity,
+          brand: createVehicleRequest.brand,
+          packageCapacity: createVehicleRequest.packageCapacity,
+          adsSidesNumber: createVehicleRequest.adsSidesNumber,
+          image: createVehicleRequest.image,
+        );
+      },
+      onSuccess: (response) => response,
+    );
+  }
+
+  FailureOr<List<TripHistoryModel>> getTripsHistory() async {
+    return await executeApiCall<TripsHistoryResponse, List<TripHistoryModel>>(
+      apiCall: () async =>
+          apiServiceClient.getTripsHistory(authorization: (await bearerToken)),
+      onSuccess: (response) => response.data!,
+    );
+  }
+
+  FailureOr<List<TripHistoryByDateModel>> getTripsHistoryByDate(
+      {required String date}) async {
+    return await executeApiCall<TripsHistoryByDateResponse,
+        List<TripHistoryByDateModel>>(
+      apiCall: () async => apiServiceClient.getTripHistoryByDate(
+          authorization: (await bearerToken), tripDate: date),
+      onSuccess: (response) => response.data!,
+    );
   }
 }

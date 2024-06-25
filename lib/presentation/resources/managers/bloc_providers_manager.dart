@@ -1,5 +1,6 @@
 import 'package:wasla_driver/app/shared/common/common_libs.dart';
 import 'package:wasla_driver/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
+import 'package:wasla_driver/presentation/modules/home/history/cubit/trips_history_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/main/cubit/main_home_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/cubit/create_vehicle_cubit.dart';
@@ -45,5 +46,9 @@ class BlocProvidersManager {
     BlocProvider<CreateVehicleCubit>.value(
       value: getIt<CreateVehicleCubit>(),
     )
+  ];
+
+  static final List<BlocProvider> tripsHistoryProviders = [
+    BlocProvider<TripsHistoryCubit>(create: (_) => getIt<TripsHistoryCubit>())
   ];
 }

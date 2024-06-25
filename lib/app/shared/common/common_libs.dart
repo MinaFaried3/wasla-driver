@@ -23,6 +23,7 @@ export 'package:wasla_driver/app/shared/error/failure.dart';
 export "package:wasla_driver/app/shared/extensions/navigation.dart";
 export 'package:wasla_driver/app/shared/extensions/not_nullable_extensions.dart';
 export 'package:wasla_driver/data/source/public_driver_repository.dart';
+export 'package:wasla_driver/generated/app_image.dart';
 export 'package:wasla_driver/models/PublicDriverProfileResponse.dart';
 export "package:wasla_driver/presentation/resources/managers/assets_manager.dart";
 export "package:wasla_driver/presentation/resources/managers/bloc_providers_manager.dart";

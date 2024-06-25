@@ -9,12 +9,34 @@ class LoadingButton extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.buttonStyle = AppButtonStyle.solidBackground,
+    this.width,
+    this.height,
+    this.fontSize,
+    this.iconSize,
+    this.radius,
+    this.buttonType = ButtonContentType.text,
+    this.svgIconPath,
+    this.backgroundColor,
+    this.fontColor,
+    this.iconColor,
+    this.matchFontColor = false,
   });
 
   factory LoadingButton.loading() => const LoadingButton(
         isLoading: true,
       );
 
+  final double? width;
+  final double? height;
+  final double? fontSize;
+  final double? iconSize;
+  final double? radius;
+  final ButtonContentType buttonType;
+  final String? svgIconPath;
+  final Color? backgroundColor;
+  final Color? fontColor;
+  final Color? iconColor;
+  final bool matchFontColor;
   final String? text;
   final void Function()? onPressed;
   final bool isLoading;
@@ -43,11 +65,30 @@ class LoadingButton extends StatelessWidget {
         return AppButton(
           onPressed: onPressed ?? () {},
           text: text ?? AppConstants.emptyString,
+          iconSize: iconSize,
+          matchFontColor: matchFontColor,
+          svgIconPath: svgIconPath,
+          buttonType: buttonType,
+          width: width,
+          height: height,
+          radius: radius,
+          backgroundColor: backgroundColor,
+          fontSize: fontSize,
+          fontColor: fontColor,
+          iconColor: iconColor,
         );
       case AppButtonStyle.outlined:
         return AppOutlinedButton(
           onPressed: onPressed ?? () {},
           text: text ?? AppConstants.emptyString,
+          svgIconPath: svgIconPath,
+          buttonType: buttonType,
+          width: width,
+          height: height,
+          radius: radius,
+          backgroundColor: backgroundColor,
+          fontSize: fontSize,
+          fontColor: fontColor,
         );
     }
   }

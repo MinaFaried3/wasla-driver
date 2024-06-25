@@ -5,10 +5,12 @@ class SectionTitle extends StatefulWidget {
     super.key,
     required this.title,
     this.iconPath,
+    this.iconSize,
   });
 
   final String title;
   final String? iconPath;
+  final double? iconSize;
 
   @override
   State<SectionTitle> createState() => _SectionTitleState();
@@ -48,7 +50,7 @@ class _SectionTitleState extends State<SectionTitle>
         child: Row(
           children: [
             if (widget.iconPath != null) ...[
-              AppSvg(height: 30, path: widget.iconPath!),
+              AppSvg(height: widget.iconSize ?? 30, path: widget.iconPath!),
               HorizontalSpace(15.w),
             ],
             Text(

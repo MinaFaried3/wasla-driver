@@ -295,6 +295,7 @@ ThemeData getApplicationTheme() {
 
     // input decoration theme (text form field)
     inputDecorationTheme: ThemeManger.inputDecorationTheme,
+
     // label style
   );
 }

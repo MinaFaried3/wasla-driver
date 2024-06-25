@@ -48,7 +48,7 @@ class PersonalInfoAndLicense extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   child: CachedNetworkImage(
                     imageUrl: licenseImage,
-                    height: 200,
+                    height: 150,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

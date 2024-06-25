@@ -8,10 +8,12 @@ class SectionWithTitle extends StatelessWidget {
     required this.content,
     this.enableContentPadding = true,
     this.iconPath,
+    this.iconsSize,
   });
 
   final String tittle;
   final String? iconPath;
+  final double? iconsSize;
   final Widget content;
   final bool enableContentPadding;
 
@@ -24,6 +26,7 @@ class SectionWithTitle extends StatelessWidget {
         SectionTitle(
           title: tittle,
           iconPath: iconPath,
+          iconSize: iconsSize,
         ),
 
         //container

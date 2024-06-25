@@ -11,7 +11,6 @@ class CreateVehicleRequest extends Equatable {
   final String packageCapacity;
   final String adsSidesNumber;
   final File image;
-  final String publicDriverId;
 
   const CreateVehicleRequest({
     required this.category,
@@ -22,7 +21,6 @@ class CreateVehicleRequest extends Equatable {
     required this.packageCapacity,
     required this.adsSidesNumber,
     required this.image,
-    required this.publicDriverId,
   });
 
   @override
@@ -35,6 +33,5 @@ class CreateVehicleRequest extends Equatable {
         packageCapacity,
         adsSidesNumber,
         image,
-        publicDriverId,
       ];
 }

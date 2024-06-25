@@ -8,8 +8,8 @@ import 'package:wasla_driver/data/api_service_client.dart';
 import 'package:wasla_driver/data/dio_factory.dart';
 import 'package:wasla_driver/data/network_checker.dart';
 import 'package:wasla_driver/data/source/local_data_source.dart';
-import 'package:wasla_driver/data/source/public_driver_repository.dart';
 import 'package:wasla_driver/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
+import 'package:wasla_driver/presentation/modules/home/history/cubit/trips_history_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/main/cubit/main_home_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/cubit/create_vehicle_cubit.dart';
@@ -277,6 +277,8 @@ final class DIModulesManger {
 
       _printIsRegistered<MainHomeCubit>();
     }
+    prepareProfileModule();
+    prepareTripsHistoryModule();
   }
 
   //
@@ -296,6 +298,15 @@ final class DIModulesManger {
       getIt.registerFactory<GetVehicleCubit>(() => GetVehicleCubit());
 
       _printIsRegistered<GetVehicleCubit>();
+    }
+  }
+
+  static void prepareTripsHistoryModule() {
+    //cubits
+    if (!GetIt.I.isRegistered<TripsHistoryCubit>()) {
+      getIt.registerFactory<TripsHistoryCubit>(() => TripsHistoryCubit());
+
+      _printIsRegistered<TripsHistoryCubit>();
     }
   }
 }

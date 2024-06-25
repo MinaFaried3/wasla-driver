@@ -5,10 +5,16 @@ class ProfileTile extends StatelessWidget {
     super.key,
     required this.iconPath,
     required this.tittle,
+    this.iconSize,
+    this.fontSize,
+    this.iconColor,
   });
 
   final String iconPath;
   final String tittle;
+  final double? iconSize;
+  final double? fontSize;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +24,16 @@ class ProfileTile extends StatelessWidget {
         children: [
           AppSvg(
             path: iconPath,
-            color: ColorsManager.tealPrimary800,
-            height: 28.sp,
+            color: iconColor ?? ColorsManager.tealPrimary800,
+            height: iconSize ?? 28.sp,
           ),
           const HorizontalSpace(10),
           Flexible(
             child: SelectableText(
               tittle,
               style: getLightStyle(
-                  fontSize: 16.sp, color: ColorsManager.offWhite500),
+                  fontSize: fontSize ?? 16.sp,
+                  color: ColorsManager.offWhite500),
               // overflow: TextOverflow.fade,
               textDirection: TextDirection.ltr,
               textAlign: TextAlign.center,

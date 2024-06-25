@@ -153,5 +153,16 @@
   "readyForTripDescription":"يرجي العلم ان في حالة تفعيل الرحلة يتم تفعيل طلبات الحجز والشحن تلقائي.",
   "shippingRequests": "طلبات الشحن",
   "reservations":"الحجوزات",
-  "startTrip": "بدء الرحلة"
+  "startTrip": "بدء الرحلة",
+  "addVehicle": "سجل عربتك",
+  "vehicleCategory": "فئة العربة",
+  "vehicleBrand":"الشركة المصنعة",
+  "vehicleCapacity": "عدد الركاب",
+  "vehiclePackageCapacity":"اقصي حمولة لطرود",
+  "vehicleAdsSidesNumber": "عدد جوانب االاعلانات",
+  "vehicleLicenseNumber":"رقم اللوحة",
+  "vehicleLicenseWord": "حروف اللوحة",
+  "vehicleImage": "صورة وسيلة النقل",
+  "yourVehicle": "عربتك",
+  "filterByDate": "فلتر عن طريق اليوم"
 }

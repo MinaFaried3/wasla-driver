@@ -37,12 +37,12 @@ class _MainBodyState extends State<MainBody> {
                         text: message),
                     getCurrentTripSuccess: (currentTrip) {
                       if (currentTrip == null) {
-                        return StartTripContent();
+                        return const StartTripContent();
                       } else {
                         return Column(
                           children: [
-                            CurrentTripContent(),
-                            VerticalSpace(30),
+                            const CurrentTripContent(),
+                            const VerticalSpace(30),
                             ListSection(
                                 tripId: currentTrip.id.toString(),
                                 tittle: 'طلبات الحجز',

@@ -2,8 +2,10 @@ import 'package:wasla_driver/app/shared/common/common_libs.dart';
 import 'package:wasla_driver/app/shared/enums/gender.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/cubit/get_vehicle_cubit.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/cubit/profile_cubit.dart';
+import 'package:wasla_driver/presentation/modules/home/profile/widget/add_vehicle/add_vehicle.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/widget/header/profile_header.dart';
 import 'package:wasla_driver/presentation/modules/home/profile/widget/personal_data/personal_info_free_trip_section.dart';
+import 'package:wasla_driver/presentation/modules/home/profile/widget/vehicle/driver_vehicle.dart';
 import 'package:wasla_driver/presentation/widgets/animation/slidable_widget.dart';
 import 'package:wasla_driver/presentation/widgets/retry.dart';
 
@@ -59,6 +61,16 @@ class _ProfileBodyContentState extends State<ProfileBodyContent> {
                           licenseImage: driver.licenseImageUrl!,
                           licenseNum: driver.licenseNum!,
                         ),
+                      ),
+                      BlocBuilder<GetVehicleCubit, GetVehicleState>(
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                              notHaveVehicle: () => const AddVehicle(),
+                              getVehicleSuccess: (vehicle) => DriverVehicle(
+                                    vehicle: vehicle,
+                                  ),
+                              orElse: () => const SizedBox());
+                        },
                       )
                     ],
                   ),
