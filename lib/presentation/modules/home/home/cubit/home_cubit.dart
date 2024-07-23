@@ -12,10 +12,10 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit()
       : super(const HomeState.initial(HomeContentItem(
-          title: AppStrings.myTrips,
-          body: TripsHistoryBody(),
-          // title: AppStrings.main,
-          // body: MainBody(),
+          // title: AppStrings.myTrips,
+          // body: TripsHistoryBody(),
+          title: AppStrings.main,
+          body: MainBody(),
         ))) {
     homeContentItems = [
       _mainContent,

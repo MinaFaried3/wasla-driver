@@ -2,7 +2,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:wasla_driver/app/shared/common/common_libs.dart';
 import 'package:wasla_driver/app/shared/helper_functions.dart';
-import 'package:wasla_driver/data/source/public_driver_repository.dart';
 import 'package:wasla_driver/models/CurrentTripResponse.dart';
 
 class CustomMaps extends StatefulWidget {
@@ -14,7 +13,7 @@ class CustomMaps extends StatefulWidget {
 }
 
 class _CustomMapsState extends State<CustomMaps> {
-  late final CameraPosition cameraPosition;
+  late CameraPosition cameraPosition;
 
   GoogleMapController? googleMapController;
   late LocationService locationService;
@@ -24,8 +23,9 @@ class _CustomMapsState extends State<CustomMaps> {
   @override
   void initState() {
     super.initState();
-    cameraPosition = const CameraPosition(
-      target: LatLng(26.896944770405693, 31.44222427539095),
+    cameraPosition = CameraPosition(
+      target: LatLng(double.parse(widget.start.latitude!),
+          double.parse(widget.start.langtitude!)),
       zoom: 12,
     );
     locationService = LocationService();
@@ -51,7 +51,7 @@ class _CustomMapsState extends State<CustomMaps> {
           future: initMapStyle(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: LoadingIndicator());
             }
             if (snapshot.hasData) {
               return GoogleMap(
@@ -141,7 +141,8 @@ class _CustomMapsState extends State<CustomMaps> {
         await locationService.checkAndRequestLocationPermission();
     if (hasPermission) {
       locationService.getRealTimeLocation(
-          updatedLocationDistance: 10,
+          updatedLocationDistance: 50,
+          updatedLocationTime: 5,
           onLocationChangedListener: (locationData) {
             var currLocation =
                 LatLng(locationData.latitude!, locationData.longitude!);
@@ -158,8 +159,9 @@ class _CustomMapsState extends State<CustomMaps> {
             getIt<PublicDriverRepository>().updateLocation(
                 latitude: locationData.latitude!.toString(),
                 langtitude: locationData.longitude!.toString());
+            cameraPosition = CameraPosition(target: currLocation, zoom: 16);
             googleMapController
-                ?.animateCamera(CameraUpdate.newLatLng(currLocation));
+                ?.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
             setState(() {});
           });
     }
@@ -202,6 +204,18 @@ final class LocationService extends Equatable {
     }
 
     return true;
+  }
+
+  Future<LatLng> getMyCurrentLocation() async {
+    await checkAndRequestLocationService();
+    bool hasPermission = await checkAndRequestLocationPermission();
+
+    if (hasPermission) {
+      final currentLocation = await location.getLocation();
+      return LatLng(currentLocation.latitude!, currentLocation.longitude!);
+    }
+
+    return const LatLng(26.896944770405693, 31.44222427539095);
   }
 
   void getRealTimeLocation({

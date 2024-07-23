@@ -19,16 +19,16 @@ class _LocationBodyState extends State<LocationBody> {
               if (context.read<CurrentTripCubit>().tripStarted &&
                   currentTrip != null) {
                 return CustomMaps(
-                  start: currentTrip!.startStation!,
-                  end: currentTrip!.endStation!,
+                  start: currentTrip.startStation!,
+                  end: currentTrip.endStation!,
                 );
               } else {
-                return Center(
+                return const Center(
                   child: Text('الرحلة لم تبدا بعد'),
                 );
               }
             },
-            orElse: () => SizedBox());
+            orElse: () => const SizedBox());
       },
     );
   }

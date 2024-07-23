@@ -35,7 +35,8 @@ class TripsHistoryCubit extends Cubit<TripsHistoryState> {
 
         oldestDate = tripDate.isBefore(oldestDate!) ? tripDate : oldestDate;
       }
-      emit(TripsHistoryState.getTripsHistorySuccess(trips: r));
+      emit(
+          TripsHistoryState.getTripsHistorySuccess(trips: r.reversed.toList()));
     });
   }
 
@@ -45,6 +46,7 @@ class TripsHistoryCubit extends Cubit<TripsHistoryState> {
     result.fold(
         (l) =>
             emit(TripsHistoryState.getTripsHistoryFailure(message: l.message)),
-        (r) => emit(TripsHistoryState.getTripsHistoryByDateSuccess(trips: r)));
+        (r) => emit(TripsHistoryState.getTripsHistoryByDateSuccess(
+            trips: r.reversed.toList())));
   }
 }
